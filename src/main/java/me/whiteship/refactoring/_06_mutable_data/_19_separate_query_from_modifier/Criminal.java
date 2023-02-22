@@ -4,20 +4,23 @@ import java.util.List;
 
 public class Criminal {
 
-    public String alertForMiscreant(List<Person> people) {
+    public void alertForMiscreant(Person people) {
+        if (people != null) {
+            setOffAlarms();
+        }
+    }
+
+    public Person findMiscreant(List<Person> people) {
         for (Person p : people) {
             if (p.getName().equals("Don")) {
-                setOffAlarms();
-                return "Don";
+                return p;
             }
 
             if (p.getName().equals("John")) {
-                setOffAlarms();
-                return "John";
+                return p;
             }
         }
-
-        return "";
+        return null;
     }
 
     private void setOffAlarms() {

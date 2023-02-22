@@ -11,11 +11,15 @@ class CriminalTest {
     @Test
     void alertForMiscreant() {
         Criminal criminal = new Criminal();
-        String found = criminal.alertForMiscreant(List.of(new Person("Keesun"), new Person("Don")));
-        assertEquals("Don", found);
+        Person found = criminal.findMiscreant(List.of(new Person("Keesun"), new Person("Don")));
+        criminal.alertForMiscreant(found);
+        assertEquals("Don", found.getName());
 
-        found = criminal.alertForMiscreant(List.of(new Person("John"), new Person("Don")));
-        assertEquals("John", found);
+        found = criminal.findMiscreant(List.of(new Person("John"), new Person("Don")));
+        assertEquals("John", found.getName());
+
+        found = criminal.findMiscreant(List.of(new Person("mks1"), new Person("mks2")));
+        assertEquals("", found.getName());
     }
 
 }
